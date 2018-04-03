@@ -67,6 +67,7 @@ import TryItOutButton from "core/components/try-it-out-button"
 import VersionStamp from "core/components/version-stamp"
 import DeepLink from "core/components/deep-link"
 import TruncatableDiv from "core/components/truncatable-div"
+import OperationAddon from "core/components/operation-popover-addon"
 
 import Markdown from "core/components/providers/markdown"
 
@@ -131,7 +132,8 @@ export default function() {
       DeepLink,
       TruncatableDiv,
       InfoUrl,
-      InfoBasePath
+      InfoBasePath,
+      OperationAddon: OperationAddon
     }
   }
 

@@ -107,7 +107,8 @@ export default class Operation extends PureComponent {
     const Schemes = getComponent( "schemes" )
     const OperationServers = getComponent( "OperationServers" )
     const OperationExt = getComponent( "OperationExt" )
-    const DeepLink = getComponent( "DeepLink" )
+    const DeepLink = getComponent("DeepLink")
+    const OperationAddon = getComponent("OperationAddon");
 
     const { showExtensions } = getConfigs()
 
@@ -140,7 +141,8 @@ export default class Operation extends PureComponent {
                 </div>
             }
 
-            { displayOperationId && operationId ? <span className="opblock-summary-operation-id">{operationId}</span> : null }
+            {displayOperationId && operationId ? <span className="opblock-summary-operation-id">{operationId}</span> : null}
+            <OperationAddon> </OperationAddon>
 
             {
               (!security || !security.count()) ? null :
