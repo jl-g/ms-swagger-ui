@@ -1,21 +1,18 @@
 import OperationPopover from "./operation-popover.jsx"
-import { createSelector } from "reselect"
 import React, { Component } from "react"
 
-export var ServiceCatalogId = null
+var ServiceCatalogId = null
+
+export const setData = (data) => {
+  ServiceCatalogId = data;
+}
 
 export const Plugin = (system) => {
   return {
     wrapComponents: {
       OperationAddon: (Original, system) => (props) => {
-        return <OperationPopover {...props} /> },
-    },
-    statePlugins: { 
-      spec: {
-        selectors: {
-          document: createSelector(state => state.get(spec))
-        }
-      }
+        return <OperationPopover {...props} serviceCatalogId={ServiceCatalogId} />
+      },
     }
   }
 }
