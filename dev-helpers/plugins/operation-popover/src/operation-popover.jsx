@@ -19,6 +19,9 @@ export default class OperationPopover extends Component {
   }
 
   render() {
+    console.log("props:");
+    console.log(this.props)
+
     return (
       <div className="operationPopoverTrigger" onClick={this.togglePopover} >
         operation popover trigger

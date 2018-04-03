@@ -7,9 +7,10 @@ export var ServiceCatalogId = null
 export const Plugin = (system) => {
   return {
     wrapComponents: {
-      OperationAddon: (Original, system) => (props) => { return <OperationPopover/> },
+      OperationAddon: (Original, system) => (props) => {
+        return <OperationPopover {...props} /> },
     },
-    statePlugins: {
+    statePlugins: { 
       spec: {
         selectors: {
           document: createSelector(state => state.get(spec))
