@@ -17,13 +17,27 @@ module.exports = {
     next(null, false)
   },
   module: {
-    rules: [{
+    rules: [
+    {
       test: /\.js/,
       loader: 'babel-loader',
       exclude: [
         /node_modules/
       ]
-    }]
+    },
+    {
+      test: /\.less$/,
+      loaders: ['style-loader', 'css-loader', 'less-loader']
+    },
+    {
+      test: /\.css$/,
+      loaders: ['style-loader', 'css-loader']
+    },
+    {
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000'
+    },
+    ]
   },
   resolve: {
     modules: ['node_modules'],

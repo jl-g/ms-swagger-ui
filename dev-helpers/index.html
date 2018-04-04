@@ -77,7 +77,10 @@
     window["SwaggerUIStandalonePreset"] = window["swagger-ui-standalone-preset"]
 
 
-    PopoverPlugin.setData("testvalue");
+    PopoverPlugin.init({
+      serviceCatalogId: "exampleid",
+      isDevelopmentEnvironment: true
+    });
 
     // Build a system
     const ui = SwaggerUIBundle({

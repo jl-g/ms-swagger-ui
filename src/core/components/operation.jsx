@@ -142,7 +142,7 @@ export default class Operation extends PureComponent {
             }
 
             {displayOperationId && operationId ? <span className="opblock-summary-operation-id">{operationId}</span> : null}
-            <OperationAddon method={method} path={path} spec={specSelectors.specStr()} />
+            <OperationAddon method={method} path={path} spec={specSelectors.specJson().toJS()} host={specSelectors.host()} />
 
             {
               (!security || !security.count()) ? null :

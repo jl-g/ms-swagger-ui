@@ -9,7 +9,6 @@ export default class OperationAddon extends Component {
   render() {
     return (
       <div className="operationAddon">
-        Operation Addon
       </div>
     )
   }

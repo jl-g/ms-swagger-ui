@@ -1,0 +1,80 @@
+@colors-grey: #c8c8c8;
+@colors-light-grey:  #e9ecef;
+
+.observed-latency-content {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  width: 270px;
+  position: absolute;
+  font-size: 14px;
+  margin-left: -245px;
+
+  .declared-latency-title-value {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .observed-latency-content-header {
+    border-bottom: 1px solid @colors-light-grey;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .observed-latency-content-title {
+    font-weight: bold;
+    padding: 10px 15px 0 15px;
+  }
+
+  .no-observed-latency {
+    padding: 10px 15px 0 15px;
+  }
+
+  table.observed-latency-popover-table {
+    padding: 0;
+
+    td.observed-latency-popover-table-percentile {
+      padding: 10px 0 0 15px;
+      width: 150px
+    }
+
+    td.observed-latency-popover-table-value {
+      padding: 10px 0 0 0;
+      font-weight: bold;
+    }
+  }
+
+  .arrow {
+    border-style: solid;
+    position: absolute;
+  }
+
+  .bottom {
+    border-color: @colors-grey transparent transparent transparent;
+    border-width: 8px 8px 0px 8px;
+    bottom: -8px;
+    left: 243px;
+  }
+
+  .bottom:after {
+    border-color: white transparent transparent transparent;
+    border-style: solid;
+    border-width: 7px 7px 0px 7px;
+    bottom: 1px;
+    content: "";
+    position: absolute;
+    left: -7px;
+  }
+}
+
+.short-latency-content {
+  margin-top: -175px;
+  height: 150px;
+}
+
+.tall-latency-content {
+  margin-top: -260px;
+  height: 235px;
+}
+
