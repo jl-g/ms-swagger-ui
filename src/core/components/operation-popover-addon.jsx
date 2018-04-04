@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 
 export default class OperationAddon extends Component {
   constructor(props) {
@@ -8,7 +7,7 @@ export default class OperationAddon extends Component {
 
   render() {
     return (
-      <div className="operationAddon">
+      <div className="operation-addon">
       </div>
     )
   }
