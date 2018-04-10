@@ -59,7 +59,7 @@ export default class OperationContainer extends PureComponent {
     const { op, layoutSelectors, getConfigs } = props
     const { docExpansion, deepLinking, displayOperationId, displayRequestDuration, supportedSubmitMethods } = getConfigs()
     const showSummary = layoutSelectors.showSummary()
-    const operationId = op.getIn(["operation", "operationId"]) || op.getIn(["operation", "__originalOperationId"]) || opId(op.get("operation"), props.path, props.method) || op.get("id")
+    const operationId = op.getIn(["operation", "__originalOperationId"]) || op.getIn(["operation", "operationId"]) || opId(op.get("operation"), props.path, props.method) || op.get("id")
     const isShownKey = ["operations", createDeepLinkPath(props.tag), createDeepLinkPath(operationId)]
     const isDeepLinkingEnabled = deepLinking && deepLinking !== "false"
     const allowTryItOut = supportedSubmitMethods.indexOf(props.method) >= 0 && (typeof props.allowTryItOut === "undefined" ?
@@ -82,6 +82,15 @@ export default class OperationContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    const { isShown } = this.props
+    const resolvedSubtree = this.getResolvedSubtree()
+
+    if(isShown && resolvedSubtree === undefined) {
+      this.requestResolvedSubtree()
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     const { response, isShown } = nextProps
     const resolvedSubtree = this.getResolvedSubtree()
@@ -97,7 +106,8 @@ export default class OperationContainer extends PureComponent {
 
   toggleShown =() => {
     let { layoutActions, tag, operationId, isShown } = this.props
-    if(!isShown) {
+    const resolvedSubtree = this.getResolvedSubtree()
+    if(!isShown && resolvedSubtree === undefined) {
       // transitioning from collapsed to expanded
       this.requestResolvedSubtree()
     }
@@ -195,6 +205,7 @@ export default class OperationContainer extends PureComponent {
       security,
       isAuthorized,
       operationId,
+      originalOperationId: resolvedSubtree.getIn(["operation", "__originalOperationId"]),
       showSummary,
       isShown,
       jumpToKey,
