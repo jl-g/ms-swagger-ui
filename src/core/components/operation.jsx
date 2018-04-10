@@ -108,6 +108,7 @@ export default class Operation extends PureComponent {
     const OperationServers = getComponent( "OperationServers" )
     const OperationExt = getComponent( "OperationExt" )
     const DeepLink = getComponent( "DeepLink" )
+    const OperationAddon = getComponent( "OperationAddon" )
 
     const { showExtensions } = getConfigs()
 
@@ -141,7 +142,7 @@ export default class Operation extends PureComponent {
             }
 
             { displayOperationId && operationId ? <span className="opblock-summary-operation-id">{operationId}</span> : null }
-
+            <OperationAddon method={method} path={path} spec={specSelectors.specJson().toJS()} host={specSelectors.host()} />
             {
               (!security || !security.count()) ? null :
                 <AuthorizeOperationBtn
