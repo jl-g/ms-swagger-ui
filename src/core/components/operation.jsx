@@ -107,8 +107,8 @@ export default class Operation extends PureComponent {
     const Schemes = getComponent( "schemes" )
     const OperationServers = getComponent( "OperationServers" )
     const OperationExt = getComponent( "OperationExt" )
-    const DeepLink = getComponent("DeepLink")
-    const OperationAddon = getComponent("OperationAddon")
+    const DeepLink = getComponent( "DeepLink" )
+    const OperationAddon = getComponent( "OperationAddon" )
 
     const { showExtensions } = getConfigs()
 
