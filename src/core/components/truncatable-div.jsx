@@ -15,25 +15,25 @@ export default class TruncatableDiv extends Component {
         super(props)
 
         this.state = { 
-            truncate: true,
-            childrenHeight: 0
+            truncated: true,
+            renderedHeight: 0
         }
 
         this.toggleTruncation = this.toggleTruncation.bind(this)
     }
 
     componentDidMount() {
-        this.setState({childrenHeight: this.descriptionChildren.clientHeight})
+        this.setState({renderedHeight: this.contents.clientHeight })
     }
 
     componentDidUpdate() {
-        if (this.state.truncate && typeof this.contents != "undefined" ) this.contents.scrollTop = 0
+        if (this.state.truncated && this.contents) this.contents.scrollTop = 0
     }
 
     toggleTruncation(event) {
         event.preventDefault()
         this.setState( prevState => { 
-            return { truncate: !prevState.truncate } 
+            return { truncated: !prevState.truncated } 
         })
     }
 
@@ -44,26 +44,32 @@ export default class TruncatableDiv extends Component {
         } = this.props
         let maxHeightLimit = 500
 
-        if (this.state.childrenHeight < heightLimit) {
+        // If the content of the truncatable div is less than the height limit, we
+        // don't want to display the 'see more' or 'see less' links. To perform this
+        // check we need to do an initial render of the content and then decide whether
+        // it crosses the height threshold. Once we render the content and the 
+        // component finishes mounting, we update the height of the children.
+        if (this.state.renderedHeight < heightLimit) {
             return (
-                <div ref={elem => this.descriptionChildren = elem}>
-                    <div className="description">
+                <div className="description" ref={elem => this.contents = elem}>
+                    <div className="truncatable">
                         { children }
                     </div>
                 </div>
             )
         }
-
-        let linkText = this.state.truncate ? "See more" : "See less"
-        let maxHeight = this.state.truncate ? `${heightLimit}px` : `${maxHeightLimit}px`
-        let descriptionStyling = this.state.truncate ? "description truncated" : "description truncatable"
+ 
+        let maxHeight = this.state.truncated ? `${heightLimit}px` : `${maxHeightLimit}px`
+        let truncatedStyling = this.state.truncated ? "truncated" : "expanded"
 
         return (
-            <div>
-                <div className={ descriptionStyling } style={{ maxHeight: maxHeight }} ref={elem => this.contents = elem}>
+            <div className="description">
+                <div className={ `truncatable ${truncatedStyling}` } ref={elem => this.contents = elem} style={{ maxHeight: maxHeight }}>
                     { children }
                 </div>
-                <a href className="expandLink" onClick={this.toggleTruncation}>{ linkText }</a>
+                <a href onClick={this.toggleTruncation}>
+                    { this.state.truncated ? "See more" : "See less" }
+                </a>
             </div>
         )
     }
