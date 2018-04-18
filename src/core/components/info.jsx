@@ -115,9 +115,11 @@ export default class Info extends React.Component {
           { url && <InfoUrl url={url} /> }
         </hgroup>
 
-        <TruncatableDiv>
-          <Markdown source={ description } />
-        </TruncatableDiv>
+        { description &&
+            <TruncatableDiv>
+              <Markdown source={ description } />
+            </TruncatableDiv>
+        }
 
         {
           termsOfService && <div>
