@@ -51,7 +51,7 @@ export default class TruncatableDiv extends Component {
         // component finishes mounting, we update the height of the children.
         if (this.state.renderedHeight < heightLimit) {
             return (
-                <div className="description" ref={elem => this.contents = elem}>
+                <div ref={elem => this.contents = elem}>
                     <div className="truncatable">
                         { children }
                     </div>
@@ -63,7 +63,7 @@ export default class TruncatableDiv extends Component {
         let truncatedStyling = this.state.truncated ? "truncated" : "expanded"
 
         return (
-            <div className="description">
+            <div>
                 <div className={ `truncatable ${truncatedStyling}` } ref={elem => this.contents = elem} style={{ maxHeight: maxHeight }}>
                     { children }
                 </div>
