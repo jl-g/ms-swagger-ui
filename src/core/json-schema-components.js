@@ -84,11 +84,11 @@ export class JsonSchema_string extends Component {
                      type={ schema.format === "password" ? "password" : "text" }
                      className={ errors.length ? "invalid" : ""}
                      title={ errors.length ? errors : ""}
-                     defaultValue={value}
+                     value={value}
                      minLength={0}
                      debounceTimeout={350}
                      placeholder={description}
-                     onBlur={ this.onChange }
+                     onChange={ this.onChange }
                      disabled={isDisabled}/>)
     }
   }
