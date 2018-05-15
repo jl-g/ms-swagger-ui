@@ -27,6 +27,13 @@ export default class OperationServers extends React.Component {
     return this.props.setSelectedServer(server, `${path}:${method}`)
   }
 
+  updateServers = (server) => {
+    // FIXME: we should be keeping up with this in props/state upstream of us
+    // instead of cheating™ with `forceUpdate`
+    this.forceUpdate();
+    return this.props.updateServers(server);
+  }
+
   setServerVariableValue = (obj) => {
     const { path, method } = this.props
     // FIXME: we should be keeping up with this in props/state upstream of us
@@ -91,8 +98,10 @@ export default class OperationServers extends React.Component {
         <Servers
           servers={serversToDisplay}
           currentServer={this.getSelectedServer()}
+          getSelectedServer={this.getSelectedServer}
           setSelectedServer={this.setSelectedServer}
           setServerVariableValue={this.setServerVariableValue}
+          updateServers={this.updateServers}
           getServerVariable={this.getServerVariable}
           getEffectiveServerValue={this.getEffectiveServerValue}
           />

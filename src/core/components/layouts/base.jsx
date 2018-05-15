@@ -112,8 +112,10 @@ export default class BaseLayout extends React.Component {
                     servers={servers}
                     currentServer={oas3Selectors.selectedServer()}
                     setSelectedServer={oas3Actions.setSelectedServer}
+                    getSelectedServer={oas3Selectors.selectedServer}
                     setServerVariableValue={oas3Actions.setServerVariableValue}
                     getServerVariable={oas3Selectors.serverVariableValue}
+                    updateServers={specActions.updateServers}
                     getEffectiveServerValue={oas3Selectors.serverEffectiveValue}
                     />
                 </Col>

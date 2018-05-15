@@ -26,6 +26,7 @@ export const UPDATE_OPERATION_META_VALUE = "spec_update_operation_meta_value"
 export const UPDATE_RESOLVED = "spec_update_resolved"
 export const UPDATE_RESOLVED_SUBTREE = "spec_update_resolved_subtree"
 export const SET_SCHEME = "set_scheme"
+export const UPDATE_SERVERS = "spec_update_servers"
 
 const toStr = (str) => isString(str) ? str : ""
 
@@ -36,6 +37,13 @@ export function updateSpec(spec) {
       type: UPDATE_SPEC,
       payload: cleanSpec
     }
+  }
+}
+
+export function updateServers(spec) {
+  return {
+    type: UPDATE_SERVERS,
+    payload: spec
   }
 }
 

@@ -1,4 +1,4 @@
-import { fromJS, List } from "immutable"
+import { fromJS, List, OrderedMap } from "immutable"
 import { fromJSOrdered, validateParam } from "core/utils"
 import win from "../../window"
 
@@ -9,6 +9,7 @@ import {
 
 import {
   UPDATE_SPEC,
+  UPDATE_SERVERS,
   UPDATE_URL,
   UPDATE_JSON,
   UPDATE_PARAM,
@@ -31,6 +32,18 @@ export default {
     return (typeof action.payload === "string")
       ? state.set("spec", action.payload)
       : state
+  },
+
+  [UPDATE_SERVERS]: (state, action) => {
+    let currentServers = state.getIn(["json", "servers"]);
+    let addedServer = new OrderedMap( {"url": action.payload} );
+    let updatedServers = currentServers.insert( 0, addedServer );
+
+    if (typeof action.payload === "string") {
+      return state.setIn(["json", "servers"], updatedServers );
+    }
+
+    return state;
   },
 
   [UPDATE_URL]: (state, action) => {
