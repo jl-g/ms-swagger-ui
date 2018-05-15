@@ -25,5 +25,5 @@ export default {
   [UPDATE_SERVER_VARIABLE_VALUE]: (state, { payload: { server, namespace, key, val } } ) =>{
     const path = namespace ? [ namespace, "serverVariableValues", server, key ] : [ "serverVariableValues", server, key ]
     return state.setIn(path, val)
-  }
+  },
 }
