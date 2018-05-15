@@ -4,7 +4,15 @@ import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 
 export default class Servers extends React.Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      enteredServer: "",
+      enteredServers: [],
+      selectedServer: ""
+    }
+  }
+ 
   static propTypes = {
     servers: ImPropTypes.list.isRequired,
     currentServer: PropTypes.string.isRequired,
@@ -29,7 +37,8 @@ export default class Servers extends React.Component {
     let {
       servers,
       setServerVariableValue,
-      getServerVariable
+      getServerVariable,
+      updateServers
     } = this.props
 
     if(this.props.currentServer !== nextProps.currentServer) {
@@ -38,9 +47,14 @@ export default class Servers extends React.Component {
         .find(v => v.get("url") === nextProps.currentServer)
 
       if(!currentServerDefinition) {
-        return this.setServer(servers.first().get("url"))
+        // Update the dropdown UI to reflect the server the user chose.
+        this.setState( { selectedServer: nextProps.currentServer } )
+
+        this.props.updateServers( nextProps.currentServer )
+        return this.setServer( nextProps.currentServer )
       }
 
+      this.setState({ selectedServer : currentServerDefinition.get("url") })
       let currentServerVariableDefs = currentServerDefinition.get("variables") || OrderedMap()
 
       currentServerVariableDefs.map((val, key) => {
@@ -87,6 +101,23 @@ export default class Servers extends React.Component {
     setSelectedServer(value)
   }
 
+  onServerKeyPress = ( event ) => {
+    if (event.key == 'Enter') {
+      this.addEnteredServer()
+    }
+  }
+
+  onEnteredServerChange = ( event ) => {
+    this.setState({
+      enteredServer: event.target.value
+    })
+  }
+
+  addEnteredServer = () => {
+    this.setServer( this.state.enteredServer )
+    this.setState({ enteredServer: "" })
+  }
+
   render() {
     let { servers,
       currentServer,
@@ -104,7 +135,7 @@ export default class Servers extends React.Component {
     return (
       <div className="servers">
         <label htmlFor="servers">
-          <select onChange={ this.onServerChange }>
+          <select onChange={ this.onServerChange } value={ this.state.selectedServer }>
             { servers.valueSeq().map(
               ( server ) =>
               <option
@@ -114,6 +145,14 @@ export default class Servers extends React.Component {
               </option>
             ).toArray()}
           </select>
+          <div className="add-server">
+            <input 
+              type="text" 
+              placeholder="Add another server" 
+              value={ this.state.enteredServer } 
+              onChange={ this.onEnteredServerChange } onKeyPress={ this.onServerKeyPress }/>
+            <button className="btn" onClick={ this.addEnteredServer }>+</button>
+          </div>
         </label>
         { shouldShowVariableUI ?
           <div>

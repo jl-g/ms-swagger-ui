@@ -213,6 +213,7 @@ export default class Operation extends PureComponent {
                   pathServers={specSelectors.paths().getIn([path, "servers"])}
                   getSelectedServer={oas3Selectors.selectedServer}
                   setSelectedServer={oas3Actions.setSelectedServer}
+                  updateServers={specActions.updateServers}
                   setServerVariableValue={oas3Actions.setServerVariableValue}
                   getServerVariable={oas3Selectors.serverVariableValue}
                   getEffectiveServerValue={oas3Selectors.serverEffectiveValue}

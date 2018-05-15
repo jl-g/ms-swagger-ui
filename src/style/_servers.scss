@@ -1,5 +1,19 @@
 .servers
 {
+    .add-server {
+        input {
+            min-width: 200px;
+            padding: 8px 8px;
+            margin-right: 4px;
+        }
+        button {
+            max-width: 20px;
+            padding: 4px 17px 7px 9px;
+            border: 2px solid $color-green;
+            color: $color-green;
+        }
+    }
+
      > label
     {
         font-size: 12px;

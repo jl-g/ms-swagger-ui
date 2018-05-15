@@ -3,6 +3,8 @@
 import * as specWrapSelectors from "./spec-extensions/wrap-selectors"
 import * as authWrapSelectors from "./auth-extensions/wrap-selectors"
 import * as specSelectors from "./spec-extensions/selectors"
+import oas3SpecReducers from "./spec-extensions/reducers"
+import * as oas3SpecActions from "./spec-extensions/actions"
 import components from "./components"
 import wrapComponents from "./wrap-components"
 import * as oas3Actions from "./actions"
@@ -15,6 +17,8 @@ export default function() {
     wrapComponents,
     statePlugins: {
       spec: {
+        reducers: oas3SpecReducers,
+        actions: oas3SpecActions,
         wrapSelectors: specWrapSelectors,
         selectors: specSelectors
       },
