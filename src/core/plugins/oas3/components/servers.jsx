@@ -135,7 +135,7 @@ export default class Servers extends React.Component {
     return (
       <div className="servers">
         <label htmlFor="servers">
-          <select onChange={ this.onServerChange } value={this.state.selectedServer}>
+          <select onChange={ this.onServerChange } value={ this.state.selectedServer }>
             { servers.valueSeq().map(
               ( server ) =>
               <option
@@ -150,8 +150,7 @@ export default class Servers extends React.Component {
               type="text" 
               placeholder="Add another server" 
               value={ this.state.enteredServer } 
-              onChange={ this.onEnteredServerChange } 
-              onKeyPress={this.onServerKeyPress}/>
+              onChange={ this.onEnteredServerChange } onKeyPress={ this.onServerKeyPress }/>
             <button className="btn" onClick={ this.addEnteredServer }>+</button>
           </div>
         </label>
