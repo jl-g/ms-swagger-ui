@@ -1,4 +1,4 @@
-import { fromJS, List, OrderedMap } from "immutable"
+import { fromJS, List } from "immutable"
 import { fromJSOrdered, validateParam } from "core/utils"
 import win from "../../window"
 
