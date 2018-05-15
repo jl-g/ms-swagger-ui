@@ -25,5 +25,18 @@ export default {
   [UPDATE_SERVER_VARIABLE_VALUE]: (state, { payload: { server, namespace, key, val } } ) =>{
     const path = namespace ? [ namespace, "serverVariableValues", server, key ] : [ "serverVariableValues", server, key ]
     return state.setIn(path, val)
-  },
+  }, 
+  ["ADFASDF"]: (state, action) => {
+    console.log("UPDATE SERVER REDUCER");
+
+    let currentServers = state.getIn(["json", "servers"]);
+    let addedServer = new OrderedMap( {"url": action.payload} );
+    let updatedServers = currentServers.insert( 0, addedServer );
+
+    if (typeof action.payload === "string") {
+      return state.setIn(["json", "servers"], updatedServers );
+    }
+
+    return state;
+  }
 }
