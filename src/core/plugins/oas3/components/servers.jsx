@@ -5,7 +5,7 @@ import ImPropTypes from "react-immutable-proptypes"
 
 export default class Servers extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       enteredServer: "",
       enteredServers: [],
@@ -48,14 +48,14 @@ export default class Servers extends React.Component {
 
       if(!currentServerDefinition) {
         // Update the dropdown UI to reflect the server the user chose.
-        this.setState( { selectedServer: nextProps.currentServer } );
+        this.setState( { selectedServer: nextProps.currentServer } )
 
-        this.props.updateServers( nextProps.currentServer );
-        return this.setServer( nextProps.currentServer );
+        this.props.updateServers( nextProps.currentServer )
+        return this.setServer( nextProps.currentServer )
       }
 
-      this.setState({ selectedServer : currentServerDefinition.get("url") });
-      let currentServerVariableDefs = currentServerDefinition.get("variables") || OrderedMap();
+      this.setState({ selectedServer : currentServerDefinition.get("url") })
+      let currentServerVariableDefs = currentServerDefinition.get("variables") || OrderedMap()
 
       currentServerVariableDefs.map((val, key) => {
         let currentValue = getServerVariable(nextProps.currentServer, key)
@@ -72,7 +72,7 @@ export default class Servers extends React.Component {
   }
 
   onServerChange =( e ) => {
-    this.setServer( e.target.value );
+    this.setServer( e.target.value )
   }
 
   onServerVariableValueChange = ( e ) => {
@@ -99,30 +99,21 @@ export default class Servers extends React.Component {
     setSelectedServer(value)
   }
 
-  getServer = () => {
-    let selected = this.props.getSelectedServer();
-    if (selected) {
-      return selected["url"];
-    } else {
-      return this.state.enteredServer;
-    }    
-  }
-  
   onServerKeyPress = ( event ) => {
     if (event.key == 'Enter') {
-      this.addEnteredServer();
+      this.addEnteredServer()
     }
   }
 
   onEnteredServerChange = ( event ) => {
     this.setState({
       enteredServer: event.target.value
-    });
+    })
   }
 
   addEnteredServer = () => {
-    this.setServer( this.state.enteredServer );
-    this.setState({ enteredServer: "" });
+    this.setServer( this.state.enteredServer )
+    this.setState({ enteredServer: "" })
   }
 
   render() {
