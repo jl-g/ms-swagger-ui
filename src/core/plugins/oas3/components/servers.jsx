@@ -146,7 +146,12 @@ export default class Servers extends React.Component {
             ).toArray()}
           </select>
           <div className="add-server">
-            <input type="text" placeholder="Add another server" value={ this.state.enteredServer } onChange={ this.onEnteredServerChange } onKeyPress={this.onServerKeyPress}/>
+            <input 
+              type="text" 
+              placeholder="Add another server" 
+              value={ this.state.enteredServer } 
+              onChange={ this.onEnteredServerChange } 
+              onKeyPress={this.onServerKeyPress}/>
             <button className="btn" onClick={ this.addEnteredServer }>+</button>
           </div>
         </label>
