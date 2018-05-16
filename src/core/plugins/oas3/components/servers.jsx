@@ -154,30 +154,26 @@ export default class Servers extends React.Component {
           { this.state.showModal && 
           <div className="dialog-ux" >
             <div className="backdrop-ux"></div>
-            <div className="modal-ux">
-              <div className="modal-dialog-ux">
-                <div className="modal-ux-inner">
-                  <div className="modal-ux-header">
-                    <h3>Add Another Server</h3>
-                    <button type="button" className="close-modal" onClick={ this.showModal }>
-                      <svg width="20" height="20">
-                        <use href="#close" xlinkHref="#close" />
-                      </svg>
-                    </button>
-                  </div>
-                  <div className="modal-ux-content">
-                    <div className="add-server">
-                      <input 
-                        type="text" 
-                        placeholder="Add another server" 
-                        value={ this.state.enteredServer } 
-                        onChange={ this.onEnteredServerChange } onKeyPress={ this.onServerKeyPress }/>
-                      <button className="btn" onClick={ this.addEnteredServer }>Add Server</button>
-                    </div>
-                  </div>
+            <div className="modal-ux modal-dialog-ux modal-ux-inner">
+              <div className="modal-ux-header">
+                <h3>Add Another Server</h3>
+                <button type="button" className="close-modal" onClick={ this.showModal }>
+                  <svg width="20" height="20">
+                    <use href="#close" xlinkHref="#close" />
+                  </svg>
+                </button>
+              </div>
+              <div className="modal-ux-content">
+                <div className="add-server">
+                  <input 
+                    type="text" 
+                    placeholder="Add another server" 
+                    value={ this.state.enteredServer } 
+                    onChange={ this.onEnteredServerChange } onKeyPress={ this.onServerKeyPress }/>
+                  <button className="btn" onClick={ this.addEnteredServer }>Add Server</button>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
           }
         </label>
