@@ -6,6 +6,7 @@
   ],
   "plugins": [
     "transform-runtime",
+    "babel-plugin-transform-es2015-constants",
     [
       "module-alias",
       [
@@ -16,6 +17,10 @@
         {
           "expose": "components",
           "src": "src/core/components"
+        },
+        {
+          "expose": "containers",
+          "src": "src/core/containers"
         },
         {
           "expose": "core",

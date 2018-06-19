@@ -31,6 +31,7 @@ import Clear from "core/components/clear"
 import LiveResponse from "core/components/live-response"
 import OnlineValidatorBadge from "core/components/online-validator-badge"
 import Operations from "core/components/operations"
+import OperationTag from "core/components/operation-tag"
 import Operation from "core/components/operation"
 import OperationExt from "core/components/operation-extensions"
 import OperationExtRow from "core/components/operation-extension-row"
@@ -50,10 +51,13 @@ import Info, {
   InfoUrl,
   InfoBasePath
 } from "core/components/info"
+import InfoContainer from "core/containers/info"
 import Footer from "core/components/footer"
+import FilterContainer from "core/containers/filter"
 import ParamBody from "core/components/param-body"
 import Curl from "core/components/curl"
 import Schemes from "core/components/schemes"
+import SchemesContainer from "core/containers/schemes"
 import ModelCollapse from "core/components/model-collapse"
 import ModelExample from "core/components/model-example"
 import ModelWrapper from "core/components/model-wrapper"
@@ -65,10 +69,12 @@ import ArrayModel from "core/components/array-model"
 import PrimitiveModel from "core/components/primitive-model"
 import Property from "core/components/property"
 import TryItOutButton from "core/components/try-it-out-button"
+import VersionPragmaFilter from "core/components/version-pragma-filter"
 import VersionStamp from "core/components/version-stamp"
 import DeepLink from "core/components/deep-link"
 import TruncatableDiv from "core/components/truncatable-div"
 import OperationAddon from "core/components/operation-popover-addon"
+import SvgAssets from "core/components/svg-assets"
 
 import Markdown from "core/components/providers/markdown"
 
@@ -94,6 +100,7 @@ export default function() {
       clear: Clear,
       liveResponse: LiveResponse,
       info: Info,
+      InfoContainer,
       onlineValidatorBadge: OnlineValidatorBadge,
       operations: Operations,
       operation: Operation,
@@ -109,9 +116,11 @@ export default function() {
       contentType: ContentType,
       overview: Overview,
       footer: Footer,
+      FilterContainer,
       ParamBody: ParamBody,
       curl: Curl,
       schemes: Schemes,
+      SchemesContainer,
       modelExample: ModelExample,
       ModelWrapper,
       ModelCollapse,
@@ -125,16 +134,19 @@ export default function() {
       TryItOutButton,
       Markdown,
       BaseLayout,
+      VersionPragmaFilter,
       VersionStamp,
       OperationExt,
       OperationExtRow,
       ParameterExt,
+      OperationTag,
       OperationContainer,
       DeepLink,
       TruncatableDiv,
       InfoUrl,
       InfoBasePath,
-      OperationAddon: OperationAddon
+      OperationAddon: OperationAddon,
+      SvgAssets
     }
   }
 
