@@ -94,6 +94,40 @@
         }
     }
 
+    .markdown ul
+    {
+        list-style-type: initial;
+        padding: initial;
+        padding-left: 40px;
+
+    }
+
+    .markdown pre
+    {
+        background-color: #EEE;
+    }
+
+    .markdown code 
+    {
+        background: initial;
+    }
+
+    .markdown h3
+    {
+        margin-top: 25px;
+    }
+
+    .markdown p
+    {
+        word-break: initial;
+    }
+
+    .markdown td
+    {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
     .truncatable
     {
         background-color: white;
