@@ -52,7 +52,7 @@ export default class TruncatableDiv extends Component {
         if (this.state.renderedHeight < heightLimit) {
             return (
                 <div ref={elem => this.contents = elem}>
-                    <div className="truncatable">
+                    <div className="markdown truncatable">
                         { children }
                     </div>
                 </div>
@@ -64,7 +64,7 @@ export default class TruncatableDiv extends Component {
 
         return (
             <div>
-                <div className={ `truncatable ${truncatedStyling}` } ref={elem => this.contents = elem} style={{ maxHeight: maxHeight }}>
+                <div className={ `markdown truncatable ${truncatedStyling}` } ref={elem => this.contents = elem} style={{ maxHeight: maxHeight }}>
                     { children }
                 </div>
                 <a href onClick={this.toggleTruncation}>
