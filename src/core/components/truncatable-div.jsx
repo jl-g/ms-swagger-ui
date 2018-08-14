@@ -8,7 +8,7 @@ export default class TruncatableDiv extends Component {
     }
 
     static defaultProps = {
-        heightLimit: 125
+        heightLimit: 100
     }
 
     constructor(props) {
