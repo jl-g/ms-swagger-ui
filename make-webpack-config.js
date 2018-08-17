@@ -72,8 +72,10 @@ module.exports = function(rules, options) {
       new UglifyJsPlugin({
         uglifyOptions: {
           mangle: specialOptions.mangle,
+          compress: specialOptions.mangle,
           beautify: !specialOptions.mangle,
         },
+        
         sourceMap: true,
       }),
       new webpack.LoaderOptionsPlugin({
@@ -142,7 +144,7 @@ module.exports = function(rules, options) {
       ],
       extensions: [".web.js", ".js", ".jsx", ".json", ".less"],
       alias: {
-        base: "getbase/src/less/base",
+        "js-yaml": "@kyleshockey/js-yaml"
       }
     },
 
