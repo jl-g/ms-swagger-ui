@@ -14,6 +14,8 @@ export default class OperationSummary extends PureComponent {
     getConfigs: PropTypes.func.isRequired,
     authActions: PropTypes.object,
     authSelectors: PropTypes.object,
+    specSelectors: PropTypes.object,
+    path: PropTypes.any
   }
 
   static defaultProps = {
@@ -31,6 +33,8 @@ export default class OperationSummary extends PureComponent {
       authSelectors,
       operationProps,
       specPath,
+      specSelectors,
+      path
     } = this.props
 
     let {
@@ -54,6 +58,7 @@ export default class OperationSummary extends PureComponent {
     const OperationSummaryMethod = getComponent("OperationSummaryMethod")
     const OperationSummaryPath = getComponent("OperationSummaryPath")
     const JumpToPath = getComponent("JumpToPath", true)
+    const OperationAddon = getComponent( "OperationAddon" )
 
     return (
 
@@ -68,7 +73,7 @@ export default class OperationSummary extends PureComponent {
         }
 
         {displayOperationId && (originalOperationId || operationId) ? <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span> : null}
-
+        <OperationAddon method={method} path={path} spec={specSelectors.specJson().toJS()} host={specSelectors.host()} />
         {
           (!security || !security.count()) ? null :
             <AuthorizeOperationBtn

@@ -100,7 +100,6 @@ export default class Operation extends PureComponent {
     const OperationExt = getComponent( "OperationExt" )
     const OperationSummary = getComponent( "OperationSummary" )
     const Link = getComponent( "Link" )
-    const OperationAddon = getComponent( "OperationAddon" )
 
     const { showExtensions } = getConfigs()
 
@@ -114,7 +113,7 @@ export default class Operation extends PureComponent {
 
     return (
         <div className={deprecated ? "opblock opblock-deprecated" : isShown ? `opblock opblock-${method} is-open` : `opblock opblock-${method}`} id={isShownKey.join("-")} >
-        <OperationSummary operationProps={operationProps} toggleShown={toggleShown} getComponent={getComponent} authActions={authActions} authSelectors={authSelectors} specPath={specPath} />
+        <OperationSummary operationProps={operationProps} toggleShown={toggleShown} getComponent={getComponent} authActions={authActions} authSelectors={authSelectors} specPath={specPath} path={path} specSelectors={specSelectors}/>
           <Collapse isOpened={isShown}>
             <div className="opblock-body">
               { (operation && operation.size) || operation === null ? null :
