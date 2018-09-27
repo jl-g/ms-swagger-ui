@@ -225,6 +225,8 @@ export default class ParameterRow extends Component {
                               getComponent={getComponent}
                               value={ value }
                               required={ required }
+                              paramName={ param.get("name") }
+                              paramLocation={ param.get("in") }
                               description={param.get("description") ? `${param.get("name")} - ${param.get("description")}` : `${param.get("name")}`}
                               onChange={ this.onChangeWrapper }
                               errors={ paramWithMeta.get("errors") }
