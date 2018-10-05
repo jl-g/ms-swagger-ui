@@ -230,6 +230,7 @@ export default class ParameterRow extends Component {
                               description={param.get("description") ? `${param.get("name")} - ${param.get("description")}` : `${param.get("name")}`}
                               onChange={ this.onChangeWrapper }
                               errors={ paramWithMeta.get("errors") }
+                              specSelectors={ specSelectors }
                               schema={ schema }/>
           }
 
